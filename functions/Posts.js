@@ -1,6 +1,6 @@
 const { createClient } = require("@astrajs/collections");
 
-const collection = 'posts';
+const collection = 'tiktokposts';
 
 exports.handler = async function(event, context, callback){
 
@@ -10,18 +10,18 @@ exports.handler = async function(event, context, callback){
         applicationToken: process.env.ASTRA_DB_APPLICATION_TOKEN,
     });
 
-    const posts = astraClient
+    const users = astraClient
         .namespace(process.env.ASTRA_DB_KEYSPACE)
         .collection(collection);
 
     try{
 
-        const res = await posts.find();
+        const res = await users.find({});
 
         return{
             statusCode: 200,
-            body: JSON.stringify(res)
-        }
+            body: JSON.stringify(Object.keys(res).map((i) => res[i]))
+        };
 
     } catch(e){
 
@@ -30,7 +30,7 @@ exports.handler = async function(event, context, callback){
         return{
             statusCode: 500,
             body: JSON.stringify(e)
-        }
+        };
 
     }
 
