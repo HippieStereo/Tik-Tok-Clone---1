@@ -1,9 +1,9 @@
-import FollowersColunm from "../components/FollowersColunm";
+import FollowersColunm from "../components/FollowersColumn";
 
 const Home = () => {
   return (
     <div className="container">
-        <div className="followers-colunm">
+        <div className="followers-column">
           <FollowersColunm />
           </div>
         <div className="feed">
