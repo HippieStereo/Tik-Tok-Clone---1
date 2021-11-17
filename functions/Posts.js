@@ -1,6 +1,6 @@
 const { createClient } = require("@astrajs/collections");
 
-const collection = 'tiktokposts';
+const collection = "tktkposts";
 
 exports.handler = async function(event, context, callback){
 
