@@ -12,8 +12,6 @@ const Home = () => {
     let topFiveFollowing;
     let topFiveNotFollowing;
 
-    console.log("userToToggle", userToToggle)
-
     const addData = async () => {
 
         await axios.post('/.netlify/functions/AddData',
