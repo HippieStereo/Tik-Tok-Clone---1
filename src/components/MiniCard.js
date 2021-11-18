@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MiniCard = ({ user }) => {
+const MiniCard = ({ user, toggleFollow }) => {
     return (
         <div className="section minicard">
             <div className="section">
@@ -11,7 +11,8 @@ const MiniCard = ({ user }) => {
                 </div>
             </div>
             {user.button_visible && <div className={
-                user.is_followed? "followed-button" : "follow-button"}>
+                user.is_followed? "followed-button" : "follow-button"}
+                onClick={() => toggleFollow(user)}>
                 {user.is_followed? "Following": "Follow"}
             </div>}
         </div>

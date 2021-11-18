@@ -7,9 +7,12 @@ import MiniCard from "../components/MiniCard";
 const Home = () => {
 
     const [users, setUsers] = useState();
+    const [userToToggle, setUserToToggle] = useState();
     let descendingUsers;
     let topFiveFollowing;
     let topFiveNotFollowing;
+
+    console.log("userToToggle", userToToggle)
 
     const addData = async () => {
 
@@ -28,6 +31,21 @@ const Home = () => {
 
         setUsers(results.data);
 
+    }
+
+    //toggle user from followed to unfollowed
+    if (userToToggle) {
+        const newValue = userToToggle.is_followed ? false : true
+        const data = {is_followed: newValue}
+
+        axios.put('/.netlify/functions/Edit', {userId: userToToggle.id, data: data })
+            .then(json => console.log(json))
+            .catch(err => console.error('error:' + err))
+            .then(() => fetchData());
+
+        setUserToToggle(null);
+
+        fetchData();
     }
 
     useEffect(() => {
@@ -57,6 +75,7 @@ const Home = () => {
                            <Card
                                key={index}
                                user={descendingUser}
+                               toggleFollow={userToToggle => setUserToToggle(userToToggle)}
                            />
                        ))}
                     </div>
@@ -70,6 +89,7 @@ const Home = () => {
                                 <MiniCard
                                     key={index}
                                     user={notFollowingUser}
+                                    toggleFollow={userToToggle => setUserToToggle(userToToggle)}
                                 />
                             ))}
                         </div>

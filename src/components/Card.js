@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = ({ user }) => {
+const Card = ({ user, toggleFollow }) => {
 
     const timestamp = user.timestamp;
     const timeStampReformat = timestamp.slice(2, 7);
@@ -21,7 +21,8 @@ const Card = ({ user }) => {
                     </div>
                 </div>
                 {user.button_visible && <div className={
-                    user.is_followed? "followed-button" : "follow-button"}>
+                    user.is_followed? "followed-button" : "follow-button"}
+                    onClick={() => toggleFollow(user)}>
                     {user.is_followed? "Following": "Follow"}
                 </div>}
             </div>
