@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const MicroCard = ({ user }) => {
+
     return (
         <div className="section microcard">
             <img className="user-profile"  src={user.avatar} width={'100%'} />

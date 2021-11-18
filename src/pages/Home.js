@@ -7,6 +7,8 @@ const Home = () => {
 
     const [users, setUsers] = useState();
     let descendingUsers;
+    let topFiveFollowing;
+    let topFiveNotFollowing
 
     const addData = async () => {
 
@@ -34,12 +36,17 @@ const Home = () => {
 
     if (users){
         descendingUsers = Object.values(users[1]).sort((a,b) => a.id < b.id ? 1 : -1);
+
+        const following = Object.values(users[1]).filter(user => user.is_followed);
+        const descendingFollowing = following.sort((a,b) => a.likes < b.likes ? 1 : -1);
+        topFiveFollowing = descendingFollowing.slice(0,5);
+        
     }
 
     return (
         <>
             <div className='container'>
-               <FollowersColumn />
+               <FollowersColumn users={topFiveFollowing}/>
                 {descendingUsers && (
                    <div className='feed'>
                        {descendingUsers.map((descendingUser, index) => (
