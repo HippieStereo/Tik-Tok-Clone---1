@@ -2,7 +2,7 @@
 
 I built a Tik Tok App in React (with REAL database)
 
-    <a href="https://www.youtube.com/watch?v=IATOicvih5A">https://www.youtube.com/watch?v=IATOicvih5A</a>
+<a href="https://www.youtube.com/watch?v=IATOicvih5A">https://www.youtube.com/watch?v=IATOicvih5A</a>
 
 TECH 
 
